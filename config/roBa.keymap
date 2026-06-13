@@ -62,6 +62,20 @@
             bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "TO_LAYER_0";
         };
+
+        switch_hanzenkaku: switch_hanzenkaku {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp GRAVE>,
+                <&macro_release>,
+                <&kp LEFT_ALT>;
+
+            label = "SWITCH_HANZENKAKU";
+        };
     };
 
     behaviors {
@@ -80,10 +94,10 @@
 
         default_layer {
             bindings = <
-&kp Q             &kp W         &kp E         &kp R                    &kp T                                                       &kp Y      &kp U  &kp I      &kp O    &lt 5 P
-&kp A             &kp S         &kp D         &kp F                    &kp G        &kp TAB                         &kp MINUS      &kp H      &kp J  &kp K      &kp L    &kp SQT
-&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V                    &kp B        &kp TAB                         &kp B          &kp N      &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 3 LA(AT)  &lt 2 SPACE  &lt_to_layer_0 1 RC(SPACE)      &kp BACKSPACE  &kp ENTER                             &lt 6 LA(AT)
+&kp Q             &kp W         &kp E         &kp R                   &kp T                                                       &kp Y      &kp U  &kp I      &kp O    &lt 5 P
+&kp A             &kp S         &kp D         &kp F                   &kp G        &kp TAB                         &kp MINUS      &kp H      &kp J  &kp K      &kp L    &kp SQT
+&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V                   &kp B        &kp TAB                         &kp B          &kp N      &kp M  &kp COMMA  &kp DOT  &lt 6 SLASH
+&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 3 SPACE  &lt 2 SPACE  &lt_to_layer_0 1 RC(SPACE)      &kp BACKSPACE  &kp ENTER                             &switch_hanzenkaku
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -110,7 +124,7 @@
         ARROW {
             bindings = <
 &kp ESCAPE      &kp LC(LS(TAB))         &kp UP_ARROW    &kp LC(TAB)              &trans                                 &kp LC(Z)  &kp LC(Y)  &kp LC(F)  &kp LC(H)  &trans
-&kp HOME        &kp LEFT_ARROW          &kp DOWN_ARROW  &kp RIGHT_ARROW          &kp END  &kp PAGE_UP        &kp LC(A)  &kp S      &mkp MB1   &mkp MB3   &mkp MB2   &trans
+&kp HOME        &kp LEFT_ARROW          &kp DOWN_ARROW  &kp RIGHT_ARROW          &kp END  &kp PAGE_UP        &kp LC(A)  &kp S      &mkp MB1   &mkp MB2   &mkp MB3   &trans
 &kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &trans   &kp PAGE_DOWN      &kp LC(X)  &kp LC(C)  &kp LC(V)  &trans     &trans     &trans
 &trans          &trans                  &trans          &trans                   &trans   &trans             &trans     &trans                                      &trans
             >;
@@ -121,8 +135,8 @@
         MOUSE {
             bindings = <
 &trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &trans    &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB2  &mkp MB3  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB4  &mkp MB5  &trans    &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                &trans
             >;
         };
@@ -138,10 +152,10 @@
 
         layer_6 {
             bindings = <
-&trans  &trans        &trans        &trans        &trans                           &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans        &trans        &trans        &trans        &bt BT_CLR
-&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans      &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR_ALL
-&trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans                                                  &trans
+&trans  &trans        &trans        &trans                   &trans                           &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&trans  &trans        &trans        &kp LANG_ZENKAKUHANKAKU  &trans  &trans      &trans       &trans        &trans        &trans        &trans        &bt BT_CLR
+&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3             &trans  &trans      &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR_ALL
+&trans  &trans        &trans        &trans                   &trans  &trans      &trans       &trans                                                  &trans
             >;
         };
     };
