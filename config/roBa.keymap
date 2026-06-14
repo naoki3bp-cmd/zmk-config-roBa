@@ -81,7 +81,7 @@
         };
 
         quote {
-            bindings = <JP_QUOTE>;
+            bindings = <&kp JP_QUOTE>;
             key-positions = <8 20>;
         };
 
