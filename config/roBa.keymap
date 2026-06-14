@@ -4,6 +4,7 @@
 #include <dt-bindings/zmk/pointing.h>
 
 // OS設定を日本語キーボードのまま使用するための変換定義（#defineに続いて、入力したい文字が左側、それに対応するUSキーボード上のキーが右側）
+
 #define JP_DQUOTE       AT                // "
 #define JP_AMPERSAND    CARET             // &
 #define JP_QUOTE        AMPERSAND         // '
@@ -54,29 +55,39 @@
     combos {
         compatible = "zmk,combos";
 
-        tab {
-            bindings = <&kp TAB>;
-            key-positions = <11 12>;
-        };
-
         shift_tab {
             bindings = <&kp LS(TAB)>;
             key-positions = <12 13>;
         };
 
-        muhennkann {
-            bindings = <&to_layer_0 INT_MUHENKAN>;
+        tab {
+            bindings = <&kp TAB>;
             key-positions = <11 10>;
         };
 
         double_quotation {
             bindings = <&kp DOUBLE_QUOTES>;
-            key-positions = <20 21>;
+            key-positions = <7 19>;
         };
 
-        eq {
-            bindings = <&kp EQUAL>;
-            key-positions = <24 25>;
+        esc {
+            bindings = <&kp ESC>;
+            key-positions = <0 10>;
+        };
+
+        hanzenkaku {
+            bindings = <&kp A>;
+            key-positions = <13 18>;
+        };
+
+        quote {
+            bindings = <&kp SINGLE_QUOTE>;
+            key-positions = <8 20>;
+        };
+
+        f2 {
+            bindings = <&kp F2>;
+            key-positions = <13 18>;
         };
     };
 
@@ -101,6 +112,20 @@
 
             label = "SWITCH_HANZENKAKU";
         };
+
+        windows_v: windows_v {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LEFT_WIN>,
+                <&macro_tap>,
+                <&kp V>,
+                <&macro_release>,
+                <&kp LEFT_WIN>;
+
+            label = "WINDOWS_V";
+        };
     };
 
     behaviors {
@@ -119,10 +144,10 @@
 
         default_layer {
             bindings = <
-&kp Q             &kp W         &kp E         &kp R                   &kp T                                                       &kp Y      &kp U  &kp I      &kp O    &lt 5 P
-&kp A             &kp S         &kp D         &kp F                   &kp G        &kp TAB                         &kp MINUS      &kp H      &kp J  &kp K      &kp L    &kp JP_AT
-&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V                   &kp B        &kp TAB                         &kp B          &kp N      &kp M  &kp COMMA  &kp DOT  &lt 6 SLASH
-&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 3 SPACE  &lt 2 SPACE  &lt_to_layer_0 1 RC(SPACE)      &kp BACKSPACE  &kp ENTER                             &switch_hanzenkaku
+&kp Q             &kp W         &kp E         &kp R                        &kp T                                                   &kp Y      &kp U  &kp I      &kp O    &lt 5 P
+&kp A             &kp S         &kp D         &kp F                        &kp G        &kp TAB                     &kp MINUS      &kp H      &kp J  &kp K      &kp L    &kp JP_YEN
+&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V                        &kp B        &kp DELETE                  &kp B          &kp N      &kp M  &kp COMMA  &kp DOT  &lt 6 SLASH
+&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 3 LEFT_SHIFT  &lt 2 SPACE  &lt_to_layer_0 1 LCTRL      &kp BACKSPACE  &kp ENTER                             &switch_hanzenkaku
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -130,28 +155,28 @@
 
         FUNCTION {
             bindings = <
-&trans          &trans  &trans  &trans  &trans                                 &kp JP_CARET       &kp JP_DQUOTE         &kp JP_QUOTE    &kp JP_LPAREN    &kp JP_RPAREN
-&trans          &trans  &trans  &trans  &trans  &trans      &kp JP_AT          &kp JP_PIPE        &kp SEMI              &kp JP_COLON    &kp JP_LBRACE    &kp JP_RBRACE
-&trans          &trans  &trans  &trans  &trans  &trans      &kp JP_UNDERSCORE  &kp JP_BACKQUOTE   &kp SLASH             &kp BSLH        &kp JP_LBRACKET  &kp JP_RBRACKET
-&kp LEFT_SHIFT  &trans  &trans  &trans  &trans  &trans      &kp COMMA          &kp PERIOD                                                                &kp JP_TILDE
+&trans          &trans  &trans  &trans  &trans                                 &kp JP_CARET      &kp JP_DQUOTE  &kp JP_QUOTE  &kp JP_LPAREN    &kp JP_RPAREN
+&trans          &trans  &trans  &trans  &trans  &trans      &kp JP_AT          &kp JP_PIPE       &kp SEMI       &kp JP_COLON  &kp JP_LBRACE    &kp JP_RBRACE
+&trans          &trans  &trans  &trans  &trans  &trans      &kp JP_UNDERSCORE  &kp JP_BACKQUOTE  &kp SLASH      &kp BSLH      &kp JP_LBRACKET  &kp JP_RBRACKET
+&kp LEFT_SHIFT  &trans  &trans  &trans  &trans  &trans      &kp COMMA          &kp PERIOD                                                      &kp JP_TILDE
             >;
         };
 
         NUM {
             bindings = <
-&kp EXCLAMATION    &kp QUESTION     &kp HASH         &kp DOLLAR       &kp JP_AMPERSAND                                        &kp JP_EQUAL        &kp JP_PLUS         &kp MINUS        &kp JP_ASTERISK     &kp SLASH
-&kp KP_NUMBER_1    &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp DELETE              &kp BACKSPACE  &kp KP_NUMBER_6     &kp KP_NUMBER_7     &kp KP_NUMBER_8  &kp KP_NUMBER_9     &kp KP_NUMBER_0
-&mt LEFT_SHIFT F1  &kp F2           &kp F3           &kp F4           &kp F5           &kp F6                  &kp F7         &kp F8              &kp F9              &kp F10          &kp F11             &kp F12
-&trans             &trans           &trans           &trans           &trans           &trans                  &kp COMMA          &kp PERIOD                                                               &kp PRCNT
+&kp EXCLAMATION    &kp QUESTION     &kp HASH         &kp DOLLAR       &kp JP_AMPERSAND                                 &kp JP_EQUAL     &kp JP_PLUS      &kp MINUS        &kp JP_ASTERISK  &kp SLASH
+&kp KP_NUMBER_1    &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp KP_NUMBER_4  &kp KP_NUMBER_5   &kp DELETE      &kp BACKSPACE  &kp KP_NUMBER_6  &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_NUMBER_0
+&mt LEFT_SHIFT F1  &kp F2           &kp F3           &kp F4           &kp F5            &kp F6          &kp F7         &kp F8           &kp F9           &kp F10          &kp F11          &kp F12
+&trans             &trans           &trans           &trans           &trans            &trans          &kp COMMA      &kp PERIOD                                                          &kp PRCNT
             >;
         };
 
         ARROW {
             bindings = <
-&kp ESCAPE      &kp LC(LS(TAB))         &kp UP_ARROW    &kp LC(TAB)              &trans                                 &kp LC(Z)  &kp LC(Y)  &kp LC(F)  &kp LC(H)  &trans
-&kp HOME        &kp LEFT_ARROW          &kp DOWN_ARROW  &kp RIGHT_ARROW          &kp END  &kp PAGE_UP        &kp LC(A)  &kp S      &mkp MB1   &mkp MB2   &mkp MB3   &trans
-&kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &trans   &kp PAGE_DOWN      &kp LC(X)  &kp LC(C)  &kp LC(V)  &trans     &trans     &trans
-&trans          &trans                  &trans          &trans                   &trans   &trans             &trans     &trans                                      &trans
+&kp ESCAPE      &kp LC(LS(TAB))         &kp UP_ARROW    &kp LC(TAB)              &trans                                 &kp LC(Z)  &kp LC(Y)  &kp LC(F)   &kp LC(H)  &trans
+&kp HOME        &kp LEFT_ARROW          &kp DOWN_ARROW  &kp RIGHT_ARROW          &kp END  &kp PAGE_UP        &kp LC(A)  &kp S      &mkp MB1   &mkp MB2    &mkp MB3   &trans
+&kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &trans   &kp PAGE_DOWN      &kp LC(X)  &kp LC(C)  &kp LC(V)  &windows_v  &trans     &trans
+&trans          &trans                  &trans          &trans                   &trans   &trans             &trans     &trans                                       &trans
             >;
 
             sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
@@ -177,10 +202,10 @@
 
         layer_6 {
             bindings = <
-&trans  &trans        &trans        &trans                   &trans                           &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&trans  &trans        &trans        &kp LANG_ZENKAKUHANKAKU  &trans  &trans      &trans       &trans        &trans        &trans        &trans        &bt BT_CLR
-&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3             &trans  &trans      &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR_ALL
-&trans  &trans        &trans        &trans                   &trans  &trans      &trans       &trans                                                  &trans
+&trans  &trans        &trans        &trans        &trans                           &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans        &trans        &trans        &trans        &bt BT_CLR
+&trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans      &bootloader  &trans        &trans        &trans        &trans        &bt BT_CLR_ALL
+&trans  &trans        &trans        &trans        &trans  &trans      &trans       &trans                                                  &trans
             >;
         };
     };
