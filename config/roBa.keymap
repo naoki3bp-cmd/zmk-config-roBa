@@ -178,7 +178,7 @@
 &kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt_to_layer_0 3 SPACE  &lt 2 SPACE  &lt_to_layer_0 1 HASH      &kp BACKSPACE  &kp ENTER                             &switch_hanzenkaku
             >;
 
-            sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
+            sensor-bindings = <&inc_dec_kp PAGE_DOWN PAGE_UP>;
         };
 
         FUNCTION {
@@ -212,17 +212,17 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB2  &mkp MB3  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB4  &mkp MB5  &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                &trans
+&trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB2  &none   &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &none     &none     &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                              &trans
             >;
         };
 
         SCROLL {
             bindings = <
 &trans  &trans  &trans  &trans  &trans                      &mkp MB4  &mkp MB5  &mkp MB1   &mkp MB2   &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans    &trans    &kp LC(C)  &kp LC(V)  &trans
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans    &mkp MB3  &kp LC(C)  &kp LC(V)  &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans    &trans    &trans     &trans     &trans
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                    &trans
             >;
