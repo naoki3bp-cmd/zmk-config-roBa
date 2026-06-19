@@ -92,12 +92,12 @@
 
         kagikakko1 {
             bindings = <&kp JP_LBRACE>;
-            key-positions = <7 19>;
+            key-positions = <7 8>;
         };
 
         kagikakko2 {
             bindings = <&kp JP_RBRACE>;
-            key-positions = <20 8>;
+            key-positions = <20 19>;
         };
 
         kakko1 {
