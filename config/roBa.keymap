@@ -91,22 +91,22 @@
         };
 
         kagikakko1 {
-            bindings = <&kp A>;
-            key-positions = <7 8>;
+            bindings = <&kp JP_LBRACE>;
+            key-positions = <7 19>;
         };
 
         kagikakko2 {
-            bindings = <&kp B>;
-            key-positions = <20 19>;
+            bindings = <&kp JP_RBRACE>;
+            key-positions = <20 8>;
         };
 
         kakko1 {
-            bindings = <&kp C>;
+            bindings = <&kp JP_LPAREN>;
             key-positions = <5 17>;
         };
 
-        kakko {
-            bindings = <&kp D>;
+        kakko2 {
+            bindings = <&kp JP_RPAREN>;
             key-positions = <18 6>;
         };
     };
