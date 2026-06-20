@@ -197,7 +197,7 @@
                 <&macro_press>,
                 <&kp LSHFT>,
                 <&macro_tap>,
-                <&kp A>,
+                <&kp JP_LBRACE>,
                 <&macro_release>,
                 <&kp LSHFT>;
 
@@ -211,7 +211,7 @@
                 <&macro_press>,
                 <&kp LSHFT>,
                 <&macro_tap>,
-                <&kp B>,
+                <&kp JP_RBRACE>,
                 <&macro_release>,
                 <&kp LSHFT>;
 
