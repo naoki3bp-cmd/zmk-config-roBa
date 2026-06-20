@@ -81,12 +81,12 @@
         };
 
         kagikakko1 {
-            bindings = <&kp JP_LBRACE>;
+            bindings = <&kagikakko1_macro>;
             key-positions = <7 19>;
         };
 
         kagikakko2 {
-            bindings = <&kp JP_RBRACE>;
+            bindings = <&kagikakko2_macro>;
             key-positions = <20 8>;
         };
 
@@ -118,6 +118,11 @@
         back-slash {
             bindings = <&kp BACKSLASH>;
             key-positions = <6 19>;
+        };
+
+        UnderBar {
+            bindings = <&kp UNDERSCORE>;
+            key-positions = <31 32>;
         };
     };
 
@@ -183,6 +188,34 @@
                 <&kp LS(LEFT_ALT)>;
 
             label = "COPY_LOWER";
+        };
+
+        kagikakko1_macro: kagikakko1_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LSHFT>,
+                <&macro_tap>,
+                <&kp A>,
+                <&macro_release>,
+                <&kp LSHFT>;
+
+            label = "KAGIKAKKO1_MACRO";
+        };
+
+        kagikakko2_macro: kagikakko2_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LSHFT>,
+                <&macro_tap>,
+                <&kp B>,
+                <&macro_release>,
+                <&kp LSHFT>;
+
+            label = "KAGIKAKKO2_MACRO";
         };
     };
 
