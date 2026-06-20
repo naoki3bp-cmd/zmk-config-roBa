@@ -109,6 +109,16 @@
             bindings = <&kp JP_RPAREN>;
             key-positions = <18 6>;
         };
+
+        slash {
+            bindings = <&kp SLASH>;
+            key-positions = <18 7>;
+        };
+
+        back-slash {
+            bindings = <&kp BACKSLASH>;
+            key-positions = <6 19>;
+        };
     };
 
     macros {
