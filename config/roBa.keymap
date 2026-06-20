@@ -81,12 +81,12 @@
         };
 
         kagikakko1 {
-            bindings = <&kagikakko1_macro>;
+            bindings = <&kp JP_LBRACKET>;
             key-positions = <7 19>;
         };
 
         kagikakko2 {
-            bindings = <&kagikakko2_macro>;
+            bindings = <&kp JP_RBRACKET>;
             key-positions = <20 8>;
         };
 
@@ -121,7 +121,7 @@
         };
 
         UnderBar {
-            bindings = <&kp UNDERSCORE>;
+            bindings = <&kp JP_UNDERSCORE>;
             key-positions = <31 32>;
         };
     };
