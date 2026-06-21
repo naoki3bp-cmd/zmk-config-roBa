@@ -231,7 +231,7 @@
 
         zip_temp_layer{
             
-        }
+        };
     };
 
     keymap {
