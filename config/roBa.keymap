@@ -229,9 +229,7 @@
             tapping-term-ms = <200>;
         };
 
-        zip_temp_layer{
-            
-        };
+
     };
 
     keymap {
