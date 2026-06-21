@@ -51,6 +51,12 @@
     // };
 };
 
+//AMLを延長する
+#include <input/processors.dtsi>
+&mkp_input_listener {
+    input-processors = <&zip_temp_layer 4 250>;
+};
+
 / {
     combos {
         compatible = "zmk,combos";
@@ -228,8 +234,6 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
         };
-
-
     };
 
     keymap {
