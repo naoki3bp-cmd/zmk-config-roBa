@@ -257,7 +257,7 @@
 &kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &mt LEFT_SHIFT SPACE  &lt 2 SPACE  &mt LCTRL DELETE      &kp BACKSPACE  &kp ENTER                             &lt 6 HASH
             >;
 
-            sensor-bindings = <&inc_dec_kp PAGE_DOWN PAGE_UP>;
+            sensor-bindings = <&encoder_msc_scroll>;
         };
 
         FUNCTION {
